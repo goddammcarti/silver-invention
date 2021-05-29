@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap" rel="stylesheet">
+
+    <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+
+        <style>
+    body, html{
+        height: 100%;
+    }
+    
+    body{
+        margin: 0;
+        padding: 0;
+        background-attachment: fixed;
+        font-family: 'Roboto', sans-serif;
+        
+        
+    
+    }
+    header{
+    position: relative;
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 10px 10px 10px 5px;
+    background: #fff;
+    box-sizing: border-box;
+    border-radius: 7px;
+    box-shadow: 0px 10px 1px #ddd, 0 10px 20px #ccc;
+    user-select: none;
+    }
+    .logo{
+        color: #ff0062;
+        height: 60px;
+        font-size: 25px;
+        line-height: 60px;
+        padding: 0 20px;
+        text-align: center;
+        box-sizing: border-box;
+        float: left;
+        font-weight: 700;
+        text-decoration: none;
+    }
+    nav{
+        float: right;
+    }
+    .clearfix{
+        clear: both;
+    }
+    nav ul{
+        margin: 0;  
+        padding: 0;
+        display: flex;
+    }
+    nav ul li{
+        list-style: none;
+        margin: 3px;
+        
+    }
+    nav ul li a{
+        display: block;
+        margin: 10px 0;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #262626;
+        border-radius: 4px;
+    }
+    nav ul li a.active{
+        background: #ff0062;
+        color: #fff;
+    }
+    
+    nav ul li a:hover
+    {
+        background: #ff0062;
+        color: #fff;
+        
+    }
+    @media(max-width: 1200px){
+        header{
+            margin: 20px ;
+        }
+    }
+    @media(max-width: 768px){
+
+
+
+        .menu-toggle{
+            display: block;
+            width: 40px;
+            height: 40px;
+            margin: 10px;
+            float: right;
+            cursor: pointer;
+            text-align: center;
+            font-size: 30px;
+            color: #ff0062;
+         }
+    
+         .logo{
+             font-size: 16px;
+         }
+    
+         .photos{
+             display: none;
+         }
+    
+         .menu-toggle:before{
+        content: '\f0c9';
+        font-family: fontAwesome;
+        line-height: 40px;
+    }
+        .menu-toggle.active:before{
+        content: '\f00d';
+        
+    }
+         nav{
+             display:none ;
+         }
+         nav.active{
+             display:block;
+             width: 100%;
+         }
+         nav.active ul{
+             display: block;
+         }
+      
+        
+    }
+    .picture{
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        max-width: 400px;
+    }
+    
+    .title{
+        background-color: #ff0062;
+        padding: 17px;
+        border-radius: 9px;
+        margin: 30px 20px 10px 20px;
+        text-align: center;
+        color: #fff;
+        box-shadow: 0px 10px 1px #d30956, 0 10px 20px #ccc;
+    }
+    .first-content-box{
+    display: flex;
+    flex-direction: row;
+    padding: 20px 40px 10px 40px;
+    border-radius: 7px;
+    box-shadow: 0px 10px 1px #2c2c2c, 0 10px 20px #8f8f8f;
+    margin: 30px 20px 10px 20px;
+    background-color: #4b4b4b;
+    color: #fff;
+    } 
+    
+    .musicwhatisit{
+        margin-right: 30px;
+    }
+    .list{
+        background-color: #ff0062;
+        border-radius: 9px;
+        margin: 30px 20px 20px 20px;
+        padding: 0px 0px 4px 0px;
+        max-width: 300px;
+        color: #fff;
+        box-shadow: 0px 10px 1px #d30956, 0 10px 20px #ccc;
+        
+    }
+    .list h2{
+        background-color: #2c2c2c;
+        color: #fff;
+        padding: 20px 10px 20px 10px;
+        border-radius: 9px 9px 0 0;
+        text-align: center;
+        margin: 0;
+    }
+   
+    .second-content-box{
+            display: flex;
+            
+        }
+    .tracks{
+        padding: 5px;
+    }
+    .tracks li{
+        list-style: none;
+
+
+    }
+    .tracks h2{
+        background: #ff0062;
+        color: #fff;
+        text-align: center;
+        padding: 2px;
+        border-radius: 6px;
+        box-shadow: 0px 10px 1px #d30956, 0 10px 20px #ccc;
+    }
+    audio{
+        display: block;
+        width: 1050px;
+        margin: 8px;
+        border-radius: 1px;
+    }
+    .tracks ul{
+        padding: 0;
+    }
+    .album-grid-box{
+    display: grid;
+    grid-template: repeat(2, 200px)/ repeat(6,200px);
+    grid-gap: 5px;
+    grid-auto-flow: row dense;
+    justify-content: center;
+    background-color: #232323  ;
+    padding: 30px 30px 40px 30px;
+    border-radius: 0 0 9px 9px;
+    margin: 0 20px 0 20px;
+    }
+    
+    img{
+        height: 100%;
+        margin: 10px;
+        transition: 0.3s;
+        border-radius: 5px;
+    }
+    img:hover{
+        cursor: pointer;
+        transform: scale(1.3);
+    }
+    .albums h1{
+        padding: 15px 10px 10px 10px;
+        background-color: #ff0062;
+        margin: 10px 20px 0 20px;
+        border-radius: 9px 9px 0 0;
+        text-align: center;
+        color: #fff;
+        box-shadow: inset 0px 10px 1px #d30956, 0 10px 20px #ccc;
+    }
+
+    footer{
+    background-color: #ff0062;
+    padding: 15px 0 15px 0;
+    margin: 14px 10px 0 10px;
+    color: #fff;
+    text-align: center;
+    border-radius: 9px 9px 0 0;
+    box-shadow: inset 0px 8px 0px 0px #d30956, 0 10px 20px #968c8c;
+    }
+        </style>
+    </head>
+    <body>
+    
+        <header>
+            <a href="home.html" class="logo" >Три вещи, которые я люблю</a>
+            <div class="menu-toggle"></div>
+            <nav> 
+           
+                <ul>
+                    <li><a href="home.html" >Фильм</a></li>
+                    <li><a href="contacs.html">Cklick me</a></li>
+                    <li><a href="map.html"  class="active">Музыка</a></li>
+     
+                </ul>
+            </nav>
+            <div class="clearfix"></div>
+
+        </header>
+
+        <div class="title">
+            <h1>Музыка, которая мне нравится</h1>
+        </div>
+        <div class="first-content-box">
+            <div class="musicwhatisit">
+                <h4>Му́зыка — вид искусства. Согласно А. Н. Сохору, этот вид «отражает действительность и воздействует на человека посредством осмысленных и особым образом организованных по высоте и во времени звуковых последований, состоящих в основном из тонов»</h4>
+            </div>
+            <div class="aboutme"><h4>Что насчёт меня то я слушаю только зарубежную музыку. Я считаю, что она намного качественнее и мелодичнее. Я слушаю рок старых американских и английских групп. Такие как Pink Floyd, Red Hot Chilli Pepers, Ozzy Osbourne. Но также последнее время слушаю Хип-хоп. Мне нравиться емоции и енергия, которые я получаю после прослушивания. Мне нравятся исполнители такие, как A$AP Rocky, Travis Scott, Playboi Carti, Young Thug и другие.</h4></div>
+        </div>
+
+        <div class="second-content-box">
+            <div class="list">
+                <h2>Мои Любимые исполнители</h2>
+                <ul>
+                    <li>Red Hot Chili Peppers</li>
+                    <li>Ozzy Osbourne</li>
+                    <li>Travis Scott</li>
+                    <li>Playboi Carti</li>
+                    <li>Pink Floyd</li>
+                    <li>The Beatles (возможно)</li>
+                    <li>Migos</li>
+                    <li>Lana Del Ray</li>
+                    <li>A$AP Rocky</li>
+                    <li>Migos</li>
+                    <li>Queen</li>
+                    <li>Gunna</li>
+                    <li>Young Thug</li>
+                </ul>
+            </div>
+            <div class="tracks">
+                <h2>Рекомендуется послушать</h2>
+                    <ul>
+                        <li>
+                            <audio controls="controls">
+                                <source src="Playboi Carti-Cancun -Sega Genesis Remix--muzlome.com.mp3" type="audio/mpeg">
+                                </audio>
+                        </li>
+                        <li>
+                            <audio controls="controls">
+                                <source src="Pink Floyd — Another Brick in the Wall, Part 2.mp3" type="audio/mpeg">
+                                </audio>
+                        </li>
+                        <li>
+                            <audio controls="controls">
+                                <source src="travis_scott-highest_in_the_room.mp3">
+                                </audio>
+                        </li>
+                        <li>
+                            <audio controls="controls">
+                                <source src="Playboi Carti - Over (slowed&reverb)_(MP3Ball.ru).mp3">
+                                </audio>
+                        </li>
+                         <li>
+                            <audio controls="controls">
+                                <source src="Playboi_Carti-No_Time_(Feat._Gunna)_(2021.MP3-PORTAL.ONLINE).mp3">
+                                </audio>
+                         </li>
+                         <li>
+                            <audio controls="controls">
+                                <source src="Don Toliver - No Idea (slowed  Reverb) - sound-fun.online.mp3">
+                                </audio>
+                         </li>
+                    </ul>
+            </div>
+        </div>
+
+<div class="albums">
+    <h1>Хорошие альбомы</h1>
+</div>
+<div class="album-grid-box">
+    <img src="35a21c6e-7075-11e8-80df-00163e233d69.jpg" alt="">
+    <img src="274px-Innuendo_album.jpg" alt="">
+    <img src="1200x1200bf-60.jpg" alt="">
+    <img src="Die_Lit_by_Playboi_Carti.jpg" alt="">
+    <img src="Heaven_or_Hell.png" alt="">
+    <img src="hpds2ZrN6EQ.jpg" alt="">
+    <img src="So_Much_Fun.jpg" alt="">
+    <img src="Testing_(альбом).jpg" alt="">
+    <img src="The_Beatles_-_Abbey_Road.jpg" alt="">
+    <img src="The_Dark_Side_of_the_Moon.jpg" alt="">
+    <img src="Travis_Scott_Astroworld.jpg" alt="">
+    <img src="Future-lil-uzi-vert-pluto-baby-pluto.jpg" alt="">
+</div>
+     
+ 
+<footer>
+<h2>
+    Нажимать F12 запрещено, так как адаптивности нет
+</h2>
+<h2>
+    🤧🤒🤕😡🤬🤯😳🥵😐😐😐😐
+</h2>
+</footer>
+ 
+
+        <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"></script>
+    
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.menu-toggle').click(function(){
+                $('.menu-toggle').toggleClass('active')
+                $('nav').toggleClass('active')
+            })
+        })
+    </script>
+</body>
+</html>
